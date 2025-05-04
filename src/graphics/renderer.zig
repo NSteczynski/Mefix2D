@@ -61,6 +61,12 @@ pub fn draw() void {
     gl.drawElements(.triangles, quad.indices.len, .unsigned_short, 0);
 }
 
+pub fn setUniform(name: [:0]const u8, matrix: [3][3]f32) void {
+    const location = shader.uniformLocation(name) orelse
+        return std.log.err("Shader is missing uniform: {s}!", .{name});
+    gl.uniformMatrix3fv(location, true, &.{matrix});
+}
+
 pub fn deinit() void {
     // For some reason it's not needed to delete them.
 

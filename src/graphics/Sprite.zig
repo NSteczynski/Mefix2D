@@ -5,17 +5,8 @@ const Self = @This();
 
 texture: Texture,
 
-pub fn init(texture: Texture) Self {
-    return Self{
-        .texture = texture,
-    };
-}
-
-pub fn render(self: Self) void {
+pub fn render(self: Self, matrix: [3][3]f32) void {
     self.texture.bind();
+    renderer.setUniform("u_Mat", matrix);
     renderer.draw();
-}
-
-pub fn deinit(self: Self) void {
-    _ = self;
 }

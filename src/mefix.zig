@@ -4,6 +4,10 @@ const renderer = @import("graphics/renderer.zig");
 
 pub const Texture = @import("graphics/Texture.zig");
 pub const Sprite = @import("graphics/Sprite.zig");
+pub const Scene = @import("world/Scene.zig");
+pub const Entity = @import("world/Entity.zig");
+
+pub const clearBackground = gl.clearBackground;
 
 pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
     window.init(width, height, title);
@@ -14,11 +18,6 @@ pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
 pub fn loop() bool {
     window.pollEvents();
     window.swapBuffers();
-
-    // Render
-    {
-        gl.clearBackground();
-    }
 
     return !window.shouldClose();
 }
