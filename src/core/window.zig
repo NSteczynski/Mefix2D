@@ -20,7 +20,7 @@ pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
         return std.process.exit(0);
     };
 
-    window.setInputModeCursor(.disabled);
+    // window.setInputModeCursor(.disabled);
 
     glfw.makeContextCurrent(window);
     glfw.swapInterval(0);

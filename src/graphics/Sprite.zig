@@ -7,6 +7,7 @@ texture: Texture,
 
 pub fn render(self: Self, matrix: [3][3]f32) void {
     self.texture.bind();
-    renderer.setUniform("u_Mat", matrix);
+    renderer.setMatrixUniform("u_Mat", matrix);
+    renderer.setVec4Uniform("color", .{ 1.0, 1.0, 1.0, 1.0 });
     renderer.draw();
 }

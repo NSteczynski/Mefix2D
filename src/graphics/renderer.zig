@@ -61,10 +61,20 @@ pub fn draw() void {
     gl.drawElements(.triangles, quad.indices.len, .unsigned_short, 0);
 }
 
-pub fn setUniform(name: [:0]const u8, matrix: [3][3]f32) void {
+pub fn drawLines() void {
+    gl.drawElements(.line_strip, quad.indices.len, .unsigned_short, 0);
+}
+
+pub fn setMatrixUniform(name: [:0]const u8, matrix: [3][3]f32) void {
     const location = shader.uniformLocation(name) orelse
         return std.log.err("Shader is missing uniform: {s}!", .{name});
     gl.uniformMatrix3fv(location, true, &.{matrix});
+}
+
+pub fn setVec4Uniform(name: [:0]const u8, vec4: [4]f32) void {
+    const location = shader.uniformLocation(name) orelse
+        return std.log.err("Shader is missing uniform: {s}!", .{name});
+    gl.uniform4fv(location, &.{vec4});
 }
 
 pub fn deinit() void {
