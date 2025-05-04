@@ -1,13 +1,16 @@
 const std = @import("std");
 const gl = @import("zgl");
 const glfw = @import("glfw");
-const window = @import("window.zig");
+
+pub const window = @import("window.zig");
 
 fn glGetProcAddress(_: glfw.GLProc, proc: [:0]const u8) ?gl.binding.FunctionPointer {
     return glfw.getProcAddress(proc);
 }
 
-pub fn init() void {
+pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
+    window.init(width, height, title);
+
     const proc: glfw.GLProc = undefined;
     gl.loadExtensions(proc, glGetProcAddress) catch |err| {
         std.log.err("Failed to load OpenGL functions: {!}!", .{err});
@@ -37,4 +40,8 @@ pub fn clearBackground() void {
 fn refresh(glfw_window: glfw.Window) void {
     const size = glfw_window.getSize();
     gl.viewport(0, 0, size.width, size.height);
+}
+
+pub fn deinit() void {
+    window.deinit();
 }

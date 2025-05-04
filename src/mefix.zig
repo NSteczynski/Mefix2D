@@ -1,28 +1,20 @@
-const window = @import("core/window.zig");
-const gl = @import("core/gl.zig");
-const renderer = @import("graphics/renderer.zig");
-
-pub const Texture = @import("graphics/Texture.zig");
-pub const Sprite = @import("graphics/Sprite.zig");
-pub const Scene = @import("world/Scene.zig");
-pub const Entity = @import("world/Entity.zig");
-
-pub const clearBackground = gl.clearBackground;
+pub const graphics = @import("graphics/graphics.zig");
+pub const core = @import("core/core.zig");
+pub const world = @import("world/world.zig");
 
 pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
-    window.init(width, height, title);
-    gl.init();
-    renderer.init();
+    core.init(width, height, title);
+    graphics.init();
 }
 
 pub fn loop() bool {
-    window.pollEvents();
-    window.swapBuffers();
+    core.window.pollEvents();
+    core.window.swapBuffers();
 
-    return !window.shouldClose();
+    return !core.window.shouldClose();
 }
 
 pub fn deinit() void {
-    window.deinit();
-    renderer.deinit();
+    core.deinit();
+    graphics.deinit();
 }
