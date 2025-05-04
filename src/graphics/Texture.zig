@@ -54,6 +54,6 @@ pub fn unbind(_: Self) void {
     gl.bindTexture(.invalid, .@"2d");
 }
 
-pub fn deinit(self: *Self) void {
+pub fn deinit(self: Self) void {
     self.texture.delete();
 }
