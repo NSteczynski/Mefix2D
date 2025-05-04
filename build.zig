@@ -31,6 +31,13 @@ pub fn build(b: *std.Build) void {
     });
     exe.root_module.addImport("zgl", zgl.module("zgl"));
 
+    const zigimg_dependency = b.dependency("zigimg", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
+    exe.root_module.addImport("zigimg", zigimg_dependency.module("zigimg"));
+
     const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());
 
