@@ -1,5 +1,4 @@
 const gl = @import("zgl");
-const window = @import("../core/window.zig");
 const renderer = @import("../graphics/renderer.zig");
 
 const Self = @This();

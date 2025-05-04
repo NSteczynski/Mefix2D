@@ -2,7 +2,6 @@ const std = @import("std");
 const glfw = @import("glfw");
 
 var window: glfw.Window = undefined;
-var last_position: glfw.Window.CursorPos = undefined;
 
 pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
     if (!glfw.init(.{})) {
@@ -22,7 +21,6 @@ pub fn init(width: u32, height: u32, title: [*:0]const u8) void {
     };
 
     window.setInputModeCursor(.disabled);
-    last_position = window.getCursorPos();
 
     glfw.makeContextCurrent(window);
     glfw.swapInterval(0);
@@ -42,15 +40,8 @@ pub fn getAspectRation() f32 {
     return @floatFromInt(size.width / size.height);
 }
 
-pub fn getCursorOffset() glfw.Window.CursorPos {
-    const position = window.getCursorPos();
-    const offset = glfw.Window.CursorPos{
-        .xpos = position.xpos - last_position.xpos,
-        .ypos = last_position.ypos - position.ypos,
-    };
-
-    last_position = position;
-    return offset;
+pub fn getCursorPos() glfw.Window.CursorPos {
+    return window.getCursorPos();
 }
 
 pub fn shouldClose() bool {

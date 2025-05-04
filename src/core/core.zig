@@ -3,6 +3,7 @@ const gl = @import("zgl");
 const glfw = @import("glfw");
 
 pub const window = @import("window.zig");
+pub const Camera = @import("Camera.zig");
 
 fn glGetProcAddress(_: glfw.GLProc, proc: [:0]const u8) ?gl.binding.FunctionPointer {
     return glfw.getProcAddress(proc);
