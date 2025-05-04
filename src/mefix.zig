@@ -1,18 +1,23 @@
 const window = @import("core/window.zig");
 const gl = @import("core/gl.zig");
 
-pub fn main() void {
+pub fn init() void {
     window.init(800, 600, "mefix2D");
-    defer window.deinit();
     gl.init();
+}
 
-    while (!window.shouldClose()) {
-        window.pollEvents();
-        defer window.swapBuffers();
+pub fn loop() bool {
+    window.pollEvents();
+    defer window.swapBuffers();
 
-        // Render
-        {
-            gl.clearBackground();
-        }
+    // Render
+    {
+        gl.clearBackground();
     }
+
+    return !window.shouldClose();
+}
+
+pub fn deinit() void {
+    window.deinit();
 }
