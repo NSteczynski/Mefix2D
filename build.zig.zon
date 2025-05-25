@@ -1,0 +1,21 @@
+.{
+    .name = .mefix,
+    .version = "0.0.1",
+    .fingerprint = 0xdc3dda2882b87a3,
+    .minimum_zig_version = "0.14.1",
+    .dependencies = .{
+        .zgl = .{
+            .url = "git+https://github.com/ziglibs/zgl#bba18181488d527c603407a0f38a346aeb9829e4",
+            .hash = "zgl-1.1.0-p_NpAH2rCQCau2UOYRdNu2eC-_T4CMWcgpqpv8REofLl",
+        },
+        .glfw = .{
+            .url = "git+https://github.com/FalsePattern/zig-glfw#d7d336a606040cac8dde395a33ac5b02bd8d5c6d",
+            .hash = "glfw-0.3.0-YPzX96IuBQAxnlG-CIYgD6I-I47XwiJHRmjkKP--t_zv",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
